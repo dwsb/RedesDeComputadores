@@ -52,8 +52,8 @@ class MyTopo(Topo):
  	self.addLink(s4, h6, bw=100, delay='1ms', loss=1, max_queue_size=100, use_htb=True)
 	
 	self.addLink(s5, h7, bw=100, delay='1ms', loss=1, max_queue_size=100, use_htb=True)
- 	self.addLink(s2, h8, bw=100, delay='1ms', loss=1, max_queue_size=100, use_htb=True)
- 	self.addLink(s2, h9, bw=100, delay='1ms', loss=1, max_queue_size=100, use_htb=True)
+ 	self.addLink(s5, h8, bw=100, delay='1ms', loss=1, max_queue_size=100, use_htb=True)
+ 	self.addLink(s5, h9, bw=100, delay='1ms', loss=1, max_queue_size=100, use_htb=True)
 
 def configureNetwork():
     "Create network and run simple performance test"
