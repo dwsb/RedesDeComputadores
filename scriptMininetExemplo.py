@@ -12,7 +12,7 @@ from functools import partial
 from mininet.node import RemoteController
 import os
 from time import sleep
-from iperf import IPerfAllTest
+#from iperf import IPerfAllTest
 
 class MyTopo(Topo):
     "Single switch connected to n hosts."
@@ -76,8 +76,8 @@ def configureNetwork():
     info( "*** Running test with iperf ***\n" )
 
 
-    it = IPerfAllTest(net.hosts)
-    it.start()
+ #   it = IPerfAllTest(net.hosts)
+ #   it.start()
 
    # it = IPerfOneToAllPairTest(net.hosts)
    # it.start()
