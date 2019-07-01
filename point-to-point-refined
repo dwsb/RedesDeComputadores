@@ -1,40 +1,41 @@
 
-#Anel
-#s1-s2
+#Regras do onos feita com add-point-intent, topologia anel
+
+#s1-s2 encaminha pacotes do switch 1 para o switch 2
 onos:add-point-intent -p 20000 of:0000000000000001/1 of:0000000000000002/1
 onos:add-point-intent -p 20000 of:0000000000000002/1 of:0000000000000002/2
-#s2-s3
+#s2-s3 encaminha pacotes do switch 2 para o switch 3
 onos:add-point-intent -p 20000 of:0000000000000002/2 of:0000000000000003/1
 onos:add-point-intent -p 20000 of:0000000000000003/1 of:0000000000000003/2
-#s3-s1
+#s3-s1 encaminha pacotes do switch 3 para o switch 1
 onos:add-point-intent -p 20000 of:0000000000000003/2 of:0000000000000001/2
 onos:add-point-intent -p 20000 of:0000000000000001/2 of:0000000000000001/1
 
-#client-s1
+#client-s1 encaminha pacote da porta do client 1 para a porta de saida do switch 1
 onos:add-point-intent -p 40000 of:0000000000000001/3 of:0000000000000001/1
-#client-s2
+#client-s2 encaminha pacote da porta do client 1 para a porta de saida do switch 2
 onos:add-point-intent -p 40000 of:0000000000000002/3 of:0000000000000002/2
-#client-s3
+#client-s3 encaminha pacote da porta do client 1 para a porta de saida do switch 3
 onos:add-point-intent -p 40000 of:0000000000000003/3 of:0000000000000003/2
 
-#s1-client
+#s1-client encaminha pacotes da porta de entrada do switch 1 para o client 1
 onos:add-point-intent -p 30000 -d 00:00:00:00:00:01 of:0000000000000001/2 of:0000000000000001/3
-#s2-client
+#s2-client encaminha pacotes da porta de entrada do switch 2 para o client 2
 onos:add-point-intent -p 30000 -d 00:00:00:00:00:02 of:0000000000000002/1 of:0000000000000002/3
-#s2-client
+#s2-client encaminha pacotes da porta de entrada do switch 3 para o client 3
 onos:add-point-intent -p 30000 -d 00:00:00:00:00:03 of:0000000000000003/1 of:0000000000000003/3
 
-#server-s1
+#server-s1 só encaminha pacotes da porta do server 1 para a porta de saida do switch 1 caso tenha o destino para o server 2
 onos:add-point-intent -p 40000 -d 00:00:00:00:00:05 of:0000000000000001/4 of:0000000000000001/1
-#server-s2
+#server-s2 só encaminha pacotes da porta do server 2 para a porta de saida do switch 2 caso tenha o destino para o server 3
 onos:add-point-intent -p 40000 -d 00:00:00:00:00:06 of:0000000000000002/4 of:0000000000000002/2
-#server-s3
+#server-s3 só encaminha pacotes da porta do server 3 para a porta de saida do switch 3 caso tenha o destino para o server 1
 onos:add-point-intent -p 40000 -d 00:00:00:00:00:04 of:0000000000000003/4 of:0000000000000003/2
 
 
-#s1-server
+#s1-server encaminha pacotes da porta de entrada do switch 1 para o server 1
 onos:add-point-intent -p 30000 -d 00:00:00:00:00:04 of:0000000000000001/2 of:0000000000000001/4
-#s2-server
+#s2-server encaminha pacotes da porta de entrada do switch 2 para o server 2
 onos:add-point-intent -p 30000 -d 00:00:00:00:00:05 of:0000000000000002/1 of:0000000000000002/4
-#s3-server
+#s3-server encaminha pacotes da porta de entrada do switch 3 para o server 3
 onos:add-point-intent -p 30000 -d 00:00:00:00:00:06 of:0000000000000003/1 of:0000000000000003/4
