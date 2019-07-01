@@ -1,0 +1,27 @@
+#S1
+
+onos:interface-add -i 10.0.0.1/24 -m 00:00:00:00:00:01 of:0000000000000001/3 s1-h1
+
+onos:interface-add -i 10.0.1.1/24 -m 00:00:00:00:00:04 of:0000000000000001/4 s1-server1
+
+onos:interface-add -i 10.0.0.2/24 -i 10.0.1.2/24 -i 10.0.0.3/24 -i 10.0.1.3/24 of:0000000000000001/1 s1-output
+#S2
+
+onos:interface-add -i 10.0.0.2/24 -m 00:00:00:00:00:02 of:0000000000000002/3 s2-h2
+
+onos:interface-add -i 10.0.1.2/24 -m 00:00:00:00:00:05 of:0000000000000002/4 s2-server2
+
+onos:interface-add -i 10.0.0.1/24 -i 10.0.1.1/24 -i 10.0.0.3/24 -i 10.0.1.3/24 of:0000000000000002/2 s2-output
+
+#S3
+
+onos:interface-add -i 10.0.0.3/24 -m 00:00:00:00:00:03 of:0000000000000003/3 s3-h3
+
+onos:interface-add -i 10.0.1.3/24 -m 00:00:00:00:00:06 of:0000000000000003/4 s3-server3
+
+onos:interface-add -i 10.0.0.1/24 -i 10.0.1.1/24 -i 10.0.0.2/24 -i 10.0.1.2/24 of:0000000000000003/2 s2-output
+
+#Intents
+
+onos:add-host-intent  00:00:00:00:00:01/None 00:00:00:00:00:03/None
+onos:add-host-intent  00:00:00:00:00:03/None 00:00:00:00:00:01/None
